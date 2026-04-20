@@ -1,570 +1,424 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESL Lesson: Clothes</title>
+    <title>Interactive ESL Lesson: The World of Clothes</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: #5d5cde;
+            --secondary: #a29bfe;
+            --accent: #ff7675;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #2d3436;
+            --text-light: #636e72;
+            --success: #00b894;
+            --error: #d63031;
+            --shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
+        * { box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            margin: 0;
             padding: 20px;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: var(--card-bg);
+            border-radius: 25px;
+            box-shadow: var(--shadow);
             overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        header {
+            background: var(--primary);
             color: white;
             padding: 40px 20px;
             text-align: center;
+            border-bottom: 5px solid var(--secondary);
         }
 
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.95;
-        }
-
-        .tab-nav {
+        /* Navigation */
+        .tabs {
             display: flex;
             flex-wrap: wrap;
-            background: #f5f5f5;
-            border-bottom: 2px solid #ddd;
-            gap: 0;
+            background: #f1f2f6;
         }
-
-        .tab-button {
+        .tab-btn {
             flex: 1;
-            min-width: 150px;
-            padding: 15px 20px;
-            background: #f5f5f5;
+            min-width: 120px;
+            padding: 15px 10px;
             border: none;
+            background: none;
             cursor: pointer;
-            font-size: 1em;
             font-weight: 600;
-            color: #333;
-            transition: all 0.3s ease;
+            color: var(--text-light);
+            transition: 0.3s;
             border-bottom: 3px solid transparent;
         }
-
-        .tab-button:hover {
-            background: #e8e8e8;
-        }
-
-        .tab-button.active {
+        .tab-btn.active {
+            color: var(--primary);
             background: white;
-            color: #667eea;
-            border-bottom-color: #667eea;
+            border-bottom-color: var(--primary);
         }
 
-        .tab-content {
+        /* Content Sections */
+        .content-section {
             display: none;
-            padding: 40px 30px;
-            animation: fadeIn 0.3s ease;
+            padding: 30px;
+            animation: fadeIn 0.4s ease;
         }
+        .content-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .tab-content.active {
-            display: block;
-        }
+        /* Typography */
+        h2 { color: var(--primary); margin-bottom: 25px; border-left: 5px solid var(--accent); padding-left: 15px; }
+        .arabic-trans { font-family: 'Amiri', serif; color: var(--secondary); font-size: 1.2em; margin-left: 8px; }
+        .category-tag { background: var(--secondary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h2 {
-            color: #667eea;
-            margin-bottom: 25px;
-            font-size: 1.8em;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-        }
-
-        h3 {
-            color: #764ba2;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .vocab-item {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        /* Cards */
+        .card {
+            background: white;
             padding: 20px;
             margin-bottom: 20px;
-            border-radius: 10px;
-            border-left: 5px solid #667eea;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #edf2f7;
         }
 
-        .vocab-term {
-            font-size: 1.4em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 8px;
-        }
+        /* Mistakes */
+        .wrong { color: var(--error); text-decoration: line-through; font-weight: bold; }
+        .right { color: var(--success); font-weight: bold; }
 
-        .arabic-trans {
-            font-size: 1.1em;
-            color: #764ba2;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-
-        .vocab-definition {
-            font-size: 1em;
-            color: #555;
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-
-        .vocab-examples {
-            background: white;
+        /* Interactive Elements */
+        input[type="text"], textarea, select {
+            width: 100%;
             padding: 12px;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-
-        .vocab-examples ul {
-            list-style-position: inside;
-            color: #666;
-        }
-
-        .vocab-examples li {
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-
-        .expression-item {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 20px;
-            margin-bottom: 20px;
+            border: 2px solid #dfe6e9;
             border-radius: 10px;
-            border-left: 5px solid #ff6b6b;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            font-size: 1rem;
         }
-
-        .expression-phrase {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .expression-context {
-            font-size: 0.95em;
-            color: #555;
-            margin-bottom: 10px;
-            font-style: italic;
-        }
-
-        .dialogue-box {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 20px;
-            margin-bottom: 20px;
+        .btn {
+            padding: 10px 20px;
             border-radius: 10px;
-            border-left: 5px solid #4facfe;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .dialogue-line {
-            margin-bottom: 10px;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .dialogue-line strong {
-            color: #4facfe;
-        }
-
-        .mistake-item {
-            background: linear-gradient(135deg, #ffa502 0%, #ffb84d 100%);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            border-left: 5px solid #ff6348;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .wrong {
-            text-decoration: line-through;
-            color: #c0392b;
-            font-weight: bold;
-        }
-
-        .right {
-            color: #27ae60;
-            font-weight: bold;
-        }
-
-        .mistake-explanation {
-            margin-top: 10px;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .exercise-block {
-            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 10px;
-            border-left: 5px solid #667eea;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .exercise-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .fill-blank-item {
-            background: white;
-            padding: 12px;
-            margin-bottom: 12px;
-            border-radius: 8px;
-            line-height: 1.6;
-        }
-
-        .fill-blank-input {
-            border: 2px solid #667eea;
-            padding: 8px 12px;
-            border-radius: 6px;
-            margin: 0 5px;
-            font-size: 0.95em;
-            width: 150px;
-        }
-
-        .clue {
-            background: #fff3cd;
-            padding: 2px 8px;
-            border-radius: 4px;
-            color: #856404;
-            font-weight: 600;
-            margin-left: 10px;
-            font-size: 0.9em;
-        }
-
-        .dropdown-match {
-            background: white;
-            padding: 12px;
-            margin-bottom: 12px;
-            border-radius: 8px;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .dropdown-match select {
-            padding: 8px 12px;
-            border: 2px solid #667eea;
-            border-radius: 6px;
-            font-size: 0.95em;
-            cursor: pointer;
-            background: white;
-        }
-
-        .paragraph-item {
-            background: white;
-            padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 8px;
-            line-height: 1.8;
-        }
-
-        .paragraph-input {
-            border: 2px solid #667eea;
-            padding: 8px 12px;
-            border-radius: 6px;
-            margin: 0 5px;
-            font-size: 0.95em;
-            width: 120px;
-        }
-
-        .btn-check {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 10px 25px;
             border: none;
-            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.95em;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: 0.2s;
             margin-right: 10px;
-            margin-top: 15px;
+            margin-top: 5px;
         }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-secondary { background: var(--secondary); color: white; }
+        .correction { display: none; margin-top: 15px; padding: 15px; background: #e1f5fe; border-radius: 10px; color: #01579b; }
 
-        .btn-check:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 12px rgba(102, 126, 234, 0.4);
+        /* Visual Cards */
+        .visual-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .visual-card { text-align: center; }
+        svg { width: 100px; height: 100px; margin-bottom: 15px; }
+
+        @media (max-width: 600px) {
+            .tabs { flex-direction: column; }
+            body { padding: 10px; }
         }
+    </style>
+</head>
+<body>
 
-        .btn-check:active {
-            transform: translateY(0);
-        }
+<div class="container">
+    <header>
+        <h1>Smart English: Clothes & Fashion</h1>
+        <p>Master vocabulary and style with our interactive guide</p>
+    </header>
 
-        .btn-show {
-            background: #27ae60;
-            color: white;
-            padding: 10px 25px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.95em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 15px;
-        }
+    <nav class="tabs">
+        <button type="button" class="tab-btn active" onclick="showTab(0)">Vocabulary</button>
+        <button type="button" class="tab-btn" onclick="showTab(1)">Expressions</button>
+        <button type="button" class="tab-btn" onclick="showTab(2)">Dialogues</button>
+        <button type="button" class="tab-btn" onclick="showTab(3)">Mistakes</button>
+        <button type="button" class="tab-btn" onclick="showTab(4)">Exercises</button>
+        <button type="button" class="tab-btn" onclick="showTab(5)">Creative</button>
+    </nav>
 
-        .btn-show:hover {
-            background: #229954;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 12px rgba(39, 174, 96, 0.4);
-        }
+    <section class="content-section active">
+        <h2>Key Vocabulary</h2>
+        <div class="category-tag">Formal Wear</div>
+        <div class="card">
+            <strong>1. Blazer</strong> <span class="arabic-trans">(سترة رسمية)</span>: A type of jacket that looks like a suit jacket but is cut more casually.
+            <ul>
+                <li>He wore a navy blue blazer to the dinner.</li>
+                <li>Does this blazer match my trousers?</li>
+                <li>She prefers a wool blazer in the winter.</li>
+                <li>I need to get my blazer dry-cleaned.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <strong>2. Cuff</strong> <span class="arabic-trans">(كُمّ / ردن)</span>: The end part of a sleeve, where the material is turned back.
+            <ul>
+                <li>He fastened the buttons on his shirt cuffs.</li>
+                <li>The cuffs of his jacket were slightly frayed.</li>
+                <li>Fold your cuffs before you start washing.</li>
+                <li>I like shirts with contrasting colors on the cuffs.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <strong>3. Tailored</strong> <span class="arabic-trans">(مُفصّل)</span>: Specifically made to fit a particular person perfectly.
+            <ul>
+                <li>He looks great in that tailored suit.</li>
+                <li>Tailored clothes are usually more expensive.</li>
+                <li>She had her dress tailored for the wedding.</li>
+                <li>I prefer a tailored fit over a baggy one.</li>
+            </ul>
+        </div>
 
-        .btn-show:active {
-            transform: translateY(0);
-        }
+        <div class="category-tag">Casual Wear</div>
+        <div class="card">
+            <strong>4. Hoodie</strong> <span class="arabic-trans">(سترة بقلنسوة)</span>: A sweatshirt with a hood attached to it.
+            <ul>
+                <li>I love wearing a warm hoodie on rainy days.</li>
+                <li>He pulled the hood of his hoodie over his head.</li>
+                <li>That oversized hoodie looks very comfortable.</li>
+                <li>Don't forget your hoodie; it's chilly outside.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <strong>5. Cardigan</strong> <span class="arabic-trans">(سترة صوفية)</span>: A knitted sweater that opens at the front with buttons or a zip.
+            <ul>
+                <li>My grandmother knitted this wool cardigan.</li>
+                <li>It's easy to layer a cardigan over a t-shirt.</li>
+                <li>She wore a long, grey cardigan to the office.</li>
+                <li>Button up your cardigan if you are cold.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <strong>6. Outfit</strong> <span class="arabic-trans">(ملابس / طقم)</span>: A set of clothes worn together.
+            <ul>
+                <li>That's a very stylish outfit you're wearing!</li>
+                <li>I need to choose an outfit for my job interview.</li>
+                <li>She bought a whole new outfit for the party.</li>
+                <li>This outfit doesn't really suit the occasion.</li>
+            </ul>
+        </div>
+    </section>
 
-        .feedback {
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 8px;
-            display: none;
-            font-weight: 600;
-        }
+    <section class="content-section">
+        <h2>Common Expressions</h2>
+        <div class="card">
+            <strong>1. To get dressed</strong>: The general process of putting clothes on.
+            <ul>
+                <li>Hurry up and get dressed!</li>
+                <li>It takes her an hour to get dressed.</li>
+                <li>I got dressed quickly this morning.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <strong>2. To fit like a glove</strong>: When a piece of clothing is the perfect size and shape.
+            <ul>
+                <li>I tried the dress on and it fits like a glove.</li>
+                <li>These new boots fit like a glove.</li>
+                <li>It’s hard to find jeans that fit like a glove.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <strong>3. To dress up</strong>: To wear formal or special clothes for an event.
+            <ul>
+                <li>We need to dress up for the gala tonight.</li>
+                <li>Kids love to dress up for Halloween.</li>
+                <li>You don't need to dress up; it's a casual party.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <strong>4. To suit someone</strong>: When a style or color looks good on a person.
+            <ul>
+                <li>That blue shirt really suits you!</li>
+                <li>Short hair doesn't suit me at all.</li>
+                <li>I don't think this hat suits my face.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <strong>5. To look for</strong>: When you are searching for a specific item in a shop.
+            <ul>
+                <li>I'm looking for a pair of black trousers.</li>
+                <li>What are you looking for in this section?</li>
+                <li>She is looking for a gift for her brother.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <strong>6. To be in fashion</strong>: When something is currently popular or trendy.
+            <ul>
+                <li>Bell-bottom jeans are back in fashion.</li>
+                <li>Is this style still in fashion?</li>
+                <li>He doesn't care about what is in fashion.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <strong>7. To try on</strong>: To put on a garment to see if it fits before buying.
+            <ul>
+                <li>Where can I try on these shirts?</li>
+                <li>Always try on shoes before you buy them.</li>
+                <li>I tried on five dresses but liked none of them.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <strong>8. To take off</strong>: The act of removing clothes.
+            <ul>
+                <li>Please take off your shoes at the door.</li>
+                <li>He took off his blazer because it was hot.</li>
+                <li>It's time to take off your wet clothes.</li>
+            </ul>
+        </div>
+    </section>
 
-        .feedback.correct {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
+    <section class="content-section">
+        <h2>Real-Life Dialogues</h2>
+        <div class="card">
+            <h3>1. In the Fitting Room</h3>
+            <p><b>Assistant:</b> How are those jeans fitting you?</p>
+            <p><b>Sarah:</b> Actually, they <b>fit like a glove</b>! I'm impressed.</p>
+            <p><b>Assistant:</b> That dark denim really <b>suits</b> your style.</p>
+            <p><b>Sarah:</b> Thanks. I'm also <b>looking for</b> a matching <b>blazer</b>.</p>
+            <p><b>Assistant:</b> We have some <b>tailored</b> options right over here.</p>
+            <p><b>Sarah:</b> Great, I'll <b>try on</b> the navy one next.</p>
+        </div>
+        <div class="card">
+            <h3>2. Getting Ready for a Wedding</h3>
+            <p><b>Mark:</b> Are you almost ready? We need to leave soon.</p>
+            <p><b>John:</b> Almost. I just need to fasten my <b>cuffs</b>.</p>
+            <p><b>Mark:</b> Wow, you really <b>dressed up</b> for this!</p>
+            <p><b>John:</b> Well, it is a formal wedding. How does my <b>outfit</b> look?</p>
+            <p><b>Mark:</b> Very sharp. That <b>tailored</b> look is definitely <b>in fashion</b>.</p>
+            <p><b>John:</b> Thanks! Let me just grab my coat and we can go.</p>
+        </div>
+    </section>
 
-        .feedback.incorrect {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
+    <section class="content-section">
+        <h2>Common Mistakes</h2>
+        <div class="card">
+            <p class="wrong">1. I am wearing a cloth.</p>
+            <p class="right">Correct: I am wearing clothes.</p>
+            <p><strong>Why:</strong> "Cloth" refers to the fabric/material. "Clothes" is the plural noun for what we wear.</p>
+        </div>
+        <div class="card">
+            <p class="wrong">2. This shirt is not fitting me.</p>
+            <p class="right">Correct: This shirt doesn't fit me.</p>
+            <p><strong>Why:</strong> "Fit" is a stative verb; we usually use the simple present, not the continuous (-ing) form.</p>
+        </div>
+        <div class="card">
+            <p class="wrong">3. He wears a blue jean.</p>
+            <p class="right">Correct: He is wearing blue jeans.</p>
+            <p><strong>Why:</strong> "Jeans" is always plural because they have two legs. You can also say "a pair of jeans."</p>
+        </div>
+        <div class="card">
+            <p class="wrong">4. Dress up your jacket, it's cold.</p>
+            <p class="right">Correct: Put on your jacket, it's cold.</p>
+            <p><strong>Why:</strong> "Dress up" means to wear formal clothes. "Put on" is the action of dressing.</p>
+        </div>
+        <div class="card">
+            <p class="wrong">5. I like your costum.</p>
+            <p class="right">Correct: I like your outfit.</p>
+            <p><strong>Why:</strong> A "costume" is for actors or parties (like a clown). An "outfit" is regular clothing.</p>
+        </div>
+    </section>
 
-        .answer-box {
-            background: #f9f9f9;
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 10px;
-            display: none;
-            border-left: 4px solid #27ae60;
-            color: #333;
-            line-height: 1.6;
-        }
+    <section class="content-section">
+        <h2>Interactive Exercises</h2>
+        
+        <div class="card">
+            <h3>Ex 1: Fill-in-the-blank</h3>
+            <p>1. I bought a new <input type="text" id="ex1-1" style="width:120px"> <span style="font-size:0.8em">(Starts with: b)</span> for the interview.</p>
+            <p>2. These shoes are perfect; they fit like a <input type="text" id="ex1-2" style="width:120px"> <span style="font-size:0.8em">(Starts with: g)</span>.</p>
+            <p>3. It's cold outside, so I'm wearing a wool <input type="text" id="ex1-3" style="width:120px"> <span style="font-size:0.8em">(Starts with: c)</span>.</p>
+            <button type="button" class="btn btn-primary" onclick="checkEx1()">Check</button>
+            <button type="button" class="btn btn-secondary" onclick="toggleCorr('corr1')">Show/Hide Corrections</button>
+            <div id="corr1" class="correction">1. blazer | 2. glove | 3. cardigan</div>
+        </div>
 
-        .visual-card {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+        <div class="card">
+            <h3>Ex 2: Matching</h3>
+            <p>Match the term to the definition:</p>
+            <p>1. Tailored: <select id="ex2-1"><option>Select</option><option value="correct">Made to fit perfectly</option><option>Sweater with a hood</option></select></p>
+            <p>2. Hoodie: <select id="ex2-2"><option>Select</option><option>Formal jacket</option><option value="correct">Sweater with a hood</option></select></p>
+            <button type="button" class="btn btn-primary" onclick="checkEx2()">Check</button>
+        </div>
+    </section>
 
-        .visual-card svg {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 15px;
-        }
+    <section class="content-section">
+        <h2>Practice & Creative</h2>
+        <div class="visual-grid">
+            <div class="visual-card card">
+                <svg viewBox="0 0 100 100">
+                    <path d="M20,30 L40,10 L60,10 L80,30 L80,90 L20,90 Z" fill="#a29bfe" />
+                    <rect x="40" y="30" width="20" height="60" fill="white" opacity="0.3" />
+                </svg>
+                <p>Describe this item:</p>
+                <textarea id="v1" placeholder="What do you see?"></textarea>
+                <button type="button" class="btn btn-secondary" onclick="alert('Sample: This is a purple blazer. It looks tailored and professional.')">Example Answer</button>
+            </div>
+            <div class="visual-card card">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="40" r="30" fill="#ff7675" />
+                    <rect x="20" y="40" width="60" height="10" fill="#ff7675" />
+                </svg>
+                <p>Describe this item:</p>
+                <textarea id="v2" placeholder="What do you see?"></textarea>
+                <button type="button" class="btn btn-secondary" onclick="alert('Sample: This is a red hat. It is a stylish accessory for an outfit.')">Example Answer</button>
+            </div>
+        </div>
 
-        .visual-question {
-            font-size: 1em;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 12px;
-        }
+        <div class="card">
+            <h3>Discussion Questions</h3>
+            <p>1. What is your favorite <b>outfit</b> to wear on the weekend?</p>
+            <textarea></textarea>
+            <button type="button" class="btn btn-secondary" onclick="alert('Sample: My favorite outfit is a comfy hoodie and blue jeans.')">Example Answer</button>
+        </div>
 
-        .visual-textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #667eea;
-            border-radius: 8px;
-            font-size: 0.95em;
-            margin-bottom: 10px;
-            resize: vertical;
-            min-height: 80px;
-            font-family: inherit;
-        }
+        <div class="card">
+            <h3>The Perfect Suit</h3>
+            <p style="font-style: italic; line-height: 1.8;">
+                Ahmed had an important interview. He wanted a <b>tailored</b> look, so he bought a navy <b>blazer</b>. When he <b>tried it on</b>, it <b>fit like a glove</b>. He checked the <b>cuffs</b> of his shirt to make sure they were clean. On his way, he saw a friend wearing a casual <b>hoodie</b>. "You look very sharp!" his friend said. Ahmed felt confident in his new <b>outfit</b>. He knew that dressing well was always <b>in fashion</b> for professional meetings.
+            </p>
+        </div>
+    </section>
+</div>
 
-        .sentence-pattern {
-            background: #fff3cd;
-            padding: 8px 12px;
-            border-radius: 6px;
-            color: #856404;
-            font-weight: 600;
-            margin-bottom: 12px;
-            font-size: 0.9em;
-        }
+<script>
+    function showTab(index) {
+        const tabs = document.querySelectorAll('.content-section');
+        const btns = document.querySelectorAll('.tab-btn');
+        tabs.forEach(t => t.classList.remove('active'));
+        btns.forEach(b => b.classList.remove('active'));
+        tabs[index].classList.add('active');
+        btns[index].classList.add('active');
+    }
 
-        .open-question {
-            background: linear-gradient(135deg, #d4a5ff 0%, #a8b3ff 100%);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            border-left: 5px solid #667eea;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    function toggleCorr(id) {
+        const el = document.getElementById(id);
+        el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
 
-        .open-question-text {
-            font-size: 1em;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 12px;
-        }
+    function checkEx1() {
+        const q1 = document.getElementById('ex1-1').value.toLowerCase().trim();
+        const q2 = document.getElementById('ex1-2').value.toLowerCase().trim();
+        if(q1 === 'blazer' && q2 === 'glove') alert('Excellent work!');
+        else alert('Some answers are incorrect. Try again!');
+    }
 
-        .open-textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #667eea;
-            border-radius: 8px;
-            font-size: 0.95em;
-            margin-bottom: 10px;
-            resize: vertical;
-            min-height: 100px;
-            font-family: inherit;
-        }
+    function checkEx2() {
+        const s1 = document.getElementById('ex2-1').value;
+        const s2 = document.getElementById('ex2-2').value;
+        if(s1 === 'correct' && s2 === 'correct') alert('Perfect matching!');
+        else alert('Check your selections.');
+    }
+</script>
 
-        .story-box {
-            background: linear-gradient(135deg, #fff5e1 0%, #ffe0b2 100%);
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 5px solid #ff9800;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            line-height: 1.8;
-            color: #333;
-        }
-
-        .story-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #ff9800;
-            margin-bottom: 15px;
-        }
-
-        .story-text {
-            font-size: 0.95em;
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em;
-            }
-
-            .tab-button {
-                min-width: 120px;
-                padding: 12px 10px;
-                font-size: 0.85em;
-            }
-
-            .tab-content {
-                padding: 25px 15px;
-            }
-
-            .fill-blank-input,
-            .paragraph-input {
-                width: 100%;
-                margin: 5px 0;
-            }
-
-            .dropdown-match {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .visual-card {
-                margin-bottom: 20px;
-            }
-
-            h2 {
-                font-size: 1.4em;
-            }
-
-            h3 {
-                font-size: 1.1em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                border-radius: 10px;
-            }
-
-            .header {
-                padding: 25px 15px;
-            }
-
-            .header h1 {
-                font-size: 1.4em;
-            }
-
-            .tab-nav {
-                gap: 0;
-            }
-
-            .tab-button {
-                min-width: 90px;
-                padding: 10px 8px;
-                font-size: 0.75em;
-            }
-
-            .tab-content {
-                padding: 20px 12px;
-            }
-
-            .vocab-item,
-            .expression-item,
-            .dialogue-box,
-            .mistake-item,
-            .exercise-block {
-                padding: 15px;
-                margin-bottom: 15px;
-            }
-
-            .btn-check,
-            .btn-show {
-                padding: 8px 15px;
-                font-size: 0.85em;
-                width: 100%;
-                margin-bottom: 5px;
-            }
-        }
-    
+</body>
+</html>
