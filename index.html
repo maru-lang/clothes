@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive ESL Lesson: The World of Clothes</title>
+    <title>Interactive ESL Lesson: Clothes & Style</title>
     <style>
         :root {
             --primary: #5d5cde;
@@ -46,7 +46,6 @@
             border-bottom: 5px solid var(--secondary);
         }
 
-        /* Navigation */
         .tabs {
             display: flex;
             flex-wrap: wrap;
@@ -70,7 +69,6 @@
             border-bottom-color: var(--primary);
         }
 
-        /* Content Sections */
         .content-section {
             display: none;
             padding: 30px;
@@ -79,12 +77,10 @@
         .content-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Typography */
         h2 { color: var(--primary); margin-bottom: 25px; border-left: 5px solid var(--accent); padding-left: 15px; }
-        .arabic-trans { font-family: 'Amiri', serif; color: var(--secondary); font-size: 1.2em; margin-left: 8px; }
-        .category-tag { background: var(--secondary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; }
+        .arabic-trans { font-family: 'Arial', sans-serif; color: var(--secondary); font-size: 1.1em; margin-left: 8px; font-weight: bold; }
+        .category-tag { background: var(--secondary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; display: inline-block; margin-bottom: 10px; }
 
-        /* Cards */
         .card {
             background: white;
             padding: 20px;
@@ -94,11 +90,6 @@
             border: 1px solid #edf2f7;
         }
 
-        /* Mistakes */
-        .wrong { color: var(--error); text-decoration: line-through; font-weight: bold; }
-        .right { color: var(--success); font-weight: bold; }
-
-        /* Interactive Elements */
         input[type="text"], textarea, select {
             width: 100%;
             padding: 12px;
@@ -107,28 +98,29 @@
             margin: 10px 0;
             font-size: 1rem;
         }
+
         .btn {
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 10px;
             border: none;
             cursor: pointer;
             font-weight: 600;
-            transition: 0.2s;
+            transition: all 0.2s;
             margin-right: 10px;
-            margin-top: 5px;
+            margin-top: 10px;
         }
         .btn-primary { background: var(--primary); color: white; }
         .btn-secondary { background: var(--secondary); color: white; }
-        .correction { display: none; margin-top: 15px; padding: 15px; background: #e1f5fe; border-radius: 10px; color: #01579b; }
+        .btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
-        /* Visual Cards */
-        .visual-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .correction { display: none; margin-top: 15px; padding: 15px; background: #e1f5fe; border-radius: 10px; color: #01579b; border: 1px solid #b3e5fc; }
+
+        .visual-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .visual-card { text-align: center; }
-        svg { width: 100px; height: 100px; margin-bottom: 15px; }
+        svg { width: 120px; height: 120px; margin: 0 auto 15px auto; display: block; }
 
         @media (max-width: 600px) {
             .tabs { flex-direction: column; }
-            body { padding: 10px; }
         }
     </style>
 </head>
@@ -136,8 +128,8 @@
 
 <div class="container">
     <header>
-        <h1>Smart English: Clothes & Fashion</h1>
-        <p>Master vocabulary and style with our interactive guide</p>
+        <h1>English for Fashion & Clothes</h1>
+        <p>Interactive Lesson Plan for Language Learners</p>
     </header>
 
     <nav class="tabs">
@@ -150,62 +142,24 @@
     </nav>
 
     <section class="content-section active">
-        <h2>Key Vocabulary</h2>
-        <div class="category-tag">Formal Wear</div>
+        <h2>Vocabulary</h2>
+        <div class="category-tag">Formal Style</div>
         <div class="card">
-            <strong>1. Blazer</strong> <span class="arabic-trans">(سترة رسمية)</span>: A type of jacket that looks like a suit jacket but is cut more casually.
+            <strong>1. Blazer</strong> <span class="arabic-trans">(سترة رسمية)</span>: A casual suit-style jacket.
             <ul>
-                <li>He wore a navy blue blazer to the dinner.</li>
-                <li>Does this blazer match my trousers?</li>
-                <li>She prefers a wool blazer in the winter.</li>
-                <li>I need to get my blazer dry-cleaned.</li>
+                <li>He wore a blue <b>blazer</b> to the meeting.</li>
+                <li>This <b>blazer</b> is too large for me.</li>
+                <li>I love the buttons on this <b>blazer</b>.</li>
+                <li>Keep your <b>blazer</b> on for the photo.</li>
             </ul>
         </div>
         <div class="card">
-            <strong>2. Cuff</strong> <span class="arabic-trans">(كُمّ / ردن)</span>: The end part of a sleeve, where the material is turned back.
+            <strong>2. Tailored</strong> <span class="arabic-trans">(مُفصّل)</span>: Custom-fitted clothing.
             <ul>
-                <li>He fastened the buttons on his shirt cuffs.</li>
-                <li>The cuffs of his jacket were slightly frayed.</li>
-                <li>Fold your cuffs before you start washing.</li>
-                <li>I like shirts with contrasting colors on the cuffs.</li>
-            </ul>
-        </div>
-        <div class="card">
-            <strong>3. Tailored</strong> <span class="arabic-trans">(مُفصّل)</span>: Specifically made to fit a particular person perfectly.
-            <ul>
-                <li>He looks great in that tailored suit.</li>
-                <li>Tailored clothes are usually more expensive.</li>
-                <li>She had her dress tailored for the wedding.</li>
-                <li>I prefer a tailored fit over a baggy one.</li>
-            </ul>
-        </div>
-
-        <div class="category-tag">Casual Wear</div>
-        <div class="card">
-            <strong>4. Hoodie</strong> <span class="arabic-trans">(سترة بقلنسوة)</span>: A sweatshirt with a hood attached to it.
-            <ul>
-                <li>I love wearing a warm hoodie on rainy days.</li>
-                <li>He pulled the hood of his hoodie over his head.</li>
-                <li>That oversized hoodie looks very comfortable.</li>
-                <li>Don't forget your hoodie; it's chilly outside.</li>
-            </ul>
-        </div>
-        <div class="card">
-            <strong>5. Cardigan</strong> <span class="arabic-trans">(سترة صوفية)</span>: A knitted sweater that opens at the front with buttons or a zip.
-            <ul>
-                <li>My grandmother knitted this wool cardigan.</li>
-                <li>It's easy to layer a cardigan over a t-shirt.</li>
-                <li>She wore a long, grey cardigan to the office.</li>
-                <li>Button up your cardigan if you are cold.</li>
-            </ul>
-        </div>
-        <div class="card">
-            <strong>6. Outfit</strong> <span class="arabic-trans">(ملابس / طقم)</span>: A set of clothes worn together.
-            <ul>
-                <li>That's a very stylish outfit you're wearing!</li>
-                <li>I need to choose an outfit for my job interview.</li>
-                <li>She bought a whole new outfit for the party.</li>
-                <li>This outfit doesn't really suit the occasion.</li>
+                <li>His <b>tailored</b> suit fits perfectly.</li>
+                <li>I prefer <b>tailored</b> shirts.</li>
+                <li>Is that dress <b>tailored</b> or store-bought?</li>
+                <li>She went to a <b>tailored</b> clothing shop.</li>
             </ul>
         </div>
     </section>
@@ -213,119 +167,40 @@
     <section class="content-section">
         <h2>Common Expressions</h2>
         <div class="card">
-            <strong>1. To get dressed</strong>: The general process of putting clothes on.
+            <strong>"Fits like a glove"</strong>: Used when something fits perfectly.
             <ul>
-                <li>Hurry up and get dressed!</li>
-                <li>It takes her an hour to get dressed.</li>
-                <li>I got dressed quickly this morning.</li>
+                <li>I tried the dress and it <b>fits like a glove</b>!</li>
+                <li>Your new shoes <b>fit like a glove</b>.</li>
+                <li>It's rare to find a hat that <b>fits like a glove</b>.</li>
             </ul>
         </div>
         <div class="card">
-            <strong>2. To fit like a glove</strong>: When a piece of clothing is the perfect size and shape.
+            <strong>"Dress up"</strong>: To wear formal clothes.
             <ul>
-                <li>I tried the dress on and it fits like a glove.</li>
-                <li>These new boots fit like a glove.</li>
-                <li>It’s hard to find jeans that fit like a glove.</li>
-            </ul>
-        </div>
-        <div class="card">
-            <strong>3. To dress up</strong>: To wear formal or special clothes for an event.
-            <ul>
-                <li>We need to dress up for the gala tonight.</li>
-                <li>Kids love to dress up for Halloween.</li>
-                <li>You don't need to dress up; it's a casual party.</li>
-            </ul>
-        </div>
-        <div class="card">
-            <strong>4. To suit someone</strong>: When a style or color looks good on a person.
-            <ul>
-                <li>That blue shirt really suits you!</li>
-                <li>Short hair doesn't suit me at all.</li>
-                <li>I don't think this hat suits my face.</li>
-            </ul>
-        </div>
-        <div class="card">
-            <strong>5. To look for</strong>: When you are searching for a specific item in a shop.
-            <ul>
-                <li>I'm looking for a pair of black trousers.</li>
-                <li>What are you looking for in this section?</li>
-                <li>She is looking for a gift for her brother.</li>
-            </ul>
-        </div>
-        <div class="card">
-            <strong>6. To be in fashion</strong>: When something is currently popular or trendy.
-            <ul>
-                <li>Bell-bottom jeans are back in fashion.</li>
-                <li>Is this style still in fashion?</li>
-                <li>He doesn't care about what is in fashion.</li>
-            </ul>
-        </div>
-        <div class="card">
-            <strong>7. To try on</strong>: To put on a garment to see if it fits before buying.
-            <ul>
-                <li>Where can I try on these shirts?</li>
-                <li>Always try on shoes before you buy them.</li>
-                <li>I tried on five dresses but liked none of them.</li>
-            </ul>
-        </div>
-        <div class="card">
-            <strong>8. To take off</strong>: The act of removing clothes.
-            <ul>
-                <li>Please take off your shoes at the door.</li>
-                <li>He took off his blazer because it was hot.</li>
-                <li>It's time to take off your wet clothes.</li>
+                <li>We need to <b>dress up</b> for the wedding.</li>
+                <li>Do I have to <b>dress up</b> tonight?</li>
+                <li>She loves to <b>dress up</b> for parties.</li>
             </ul>
         </div>
     </section>
 
     <section class="content-section">
-        <h2>Real-Life Dialogues</h2>
+        <h2>Dialogues</h2>
         <div class="card">
-            <h3>1. In the Fitting Room</h3>
-            <p><b>Assistant:</b> How are those jeans fitting you?</p>
-            <p><b>Sarah:</b> Actually, they <b>fit like a glove</b>! I'm impressed.</p>
-            <p><b>Assistant:</b> That dark denim really <b>suits</b> your style.</p>
-            <p><b>Sarah:</b> Thanks. I'm also <b>looking for</b> a matching <b>blazer</b>.</p>
-            <p><b>Assistant:</b> We have some <b>tailored</b> options right over here.</p>
-            <p><b>Sarah:</b> Great, I'll <b>try on</b> the navy one next.</p>
-        </div>
-        <div class="card">
-            <h3>2. Getting Ready for a Wedding</h3>
-            <p><b>Mark:</b> Are you almost ready? We need to leave soon.</p>
-            <p><b>John:</b> Almost. I just need to fasten my <b>cuffs</b>.</p>
-            <p><b>Mark:</b> Wow, you really <b>dressed up</b> for this!</p>
-            <p><b>John:</b> Well, it is a formal wedding. How does my <b>outfit</b> look?</p>
-            <p><b>Mark:</b> Very sharp. That <b>tailored</b> look is definitely <b>in fashion</b>.</p>
-            <p><b>John:</b> Thanks! Let me just grab my coat and we can go.</p>
+            <p><b>Mark:</b> Are you <b>dressing up</b> for the dinner tonight?</p>
+            <p><b>Jane:</b> Yes, I'm wearing my <b>tailored</b> dress.</p>
+            <p><b>Mark:</b> Does it still <b>fit like a glove</b>?</p>
+            <p><b>Jane:</b> It does! It's my favorite <b>outfit</b>.</p>
+        </p>
         </div>
     </section>
 
     <section class="content-section">
         <h2>Common Mistakes</h2>
         <div class="card">
-            <p class="wrong">1. I am wearing a cloth.</p>
-            <p class="right">Correct: I am wearing clothes.</p>
-            <p><strong>Why:</strong> "Cloth" refers to the fabric/material. "Clothes" is the plural noun for what we wear.</p>
-        </div>
-        <div class="card">
-            <p class="wrong">2. This shirt is not fitting me.</p>
-            <p class="right">Correct: This shirt doesn't fit me.</p>
-            <p><strong>Why:</strong> "Fit" is a stative verb; we usually use the simple present, not the continuous (-ing) form.</p>
-        </div>
-        <div class="card">
-            <p class="wrong">3. He wears a blue jean.</p>
-            <p class="right">Correct: He is wearing blue jeans.</p>
-            <p><strong>Why:</strong> "Jeans" is always plural because they have two legs. You can also say "a pair of jeans."</p>
-        </div>
-        <div class="card">
-            <p class="wrong">4. Dress up your jacket, it's cold.</p>
-            <p class="right">Correct: Put on your jacket, it's cold.</p>
-            <p><strong>Why:</strong> "Dress up" means to wear formal clothes. "Put on" is the action of dressing.</p>
-        </div>
-        <div class="card">
-            <p class="wrong">5. I like your costum.</p>
-            <p class="right">Correct: I like your outfit.</p>
-            <p><strong>Why:</strong> A "costume" is for actors or parties (like a clown). An "outfit" is regular clothing.</p>
+            <p style="text-decoration: line-through; color: var(--error);">I am wearing a blue jean.</p>
+            <p style="color: var(--success); font-weight: bold;">I am wearing blue jeans.</p>
+            <p><strong>Why:</strong> "Jeans" is always plural because there are two legs.</p>
         </div>
     </section>
 
@@ -333,90 +208,103 @@
         <h2>Interactive Exercises</h2>
         
         <div class="card">
-            <h3>Ex 1: Fill-in-the-blank</h3>
-            <p>1. I bought a new <input type="text" id="ex1-1" style="width:120px"> <span style="font-size:0.8em">(Starts with: b)</span> for the interview.</p>
-            <p>2. These shoes are perfect; they fit like a <input type="text" id="ex1-2" style="width:120px"> <span style="font-size:0.8em">(Starts with: g)</span>.</p>
-            <p>3. It's cold outside, so I'm wearing a wool <input type="text" id="ex1-3" style="width:120px"> <span style="font-size:0.8em">(Starts with: c)</span>.</p>
-            <button type="button" class="btn btn-primary" onclick="checkEx1()">Check</button>
+            <h3>Exercise 1: Fill in the Blanks</h3>
+            <p>1. This suit is <input type="text" id="ex1-1" style="width:150px"> <small>(Starts with: t)</small> to fit my body.</p>
+            <p>2. I don't want to wear a suit; I will just wear a <input type="text" id="ex1-2" style="width:150px"> <small>(Starts with: b)</small>.</p>
+            <p>3. It's a casual party, you don't need to <input type="text" id="ex1-3" style="width:150px"> <small>(Starts with: d... u...)</small>.</p>
+            <button type="button" class="btn btn-primary" onclick="checkEx1()">Check Answers</button>
             <button type="button" class="btn btn-secondary" onclick="toggleCorr('corr1')">Show/Hide Corrections</button>
-            <div id="corr1" class="correction">1. blazer | 2. glove | 3. cardigan</div>
+            <div id="corr1" class="correction">Answers: 1. tailored, 2. blazer, 3. dress up</div>
         </div>
 
         <div class="card">
-            <h3>Ex 2: Matching</h3>
-            <p>Match the term to the definition:</p>
-            <p>1. Tailored: <select id="ex2-1"><option>Select</option><option value="correct">Made to fit perfectly</option><option>Sweater with a hood</option></select></p>
-            <p>2. Hoodie: <select id="ex2-2"><option>Select</option><option>Formal jacket</option><option value="correct">Sweater with a hood</option></select></p>
-            <button type="button" class="btn btn-primary" onclick="checkEx2()">Check</button>
+            <h3>Exercise 2: Matching</h3>
+            <p>1. Perfect size: <select id="ex2-1"><option value="">--Select--</option><option value="correct">Fits like a glove</option><option value="wrong">Dress up</option></select></p>
+            <p>2. Wear formal clothes: <select id="ex2-2"><option value="">--Select--</option><option value="wrong">Tailored</option><option value="correct">Dress up</option></select></p>
+            <button type="button" class="btn btn-primary" onclick="checkEx2()">Check Answers</button>
         </div>
     </section>
 
     <section class="content-section">
-        <h2>Practice & Creative</h2>
+        <h2>Creative Practice</h2>
         <div class="visual-grid">
             <div class="visual-card card">
                 <svg viewBox="0 0 100 100">
-                    <path d="M20,30 L40,10 L60,10 L80,30 L80,90 L20,90 Z" fill="#a29bfe" />
-                    <rect x="40" y="30" width="20" height="60" fill="white" opacity="0.3" />
+                    <path d="M20,30 L40,10 L60,10 L80,30 L80,90 L20,90 Z" fill="#5d5cde" />
+                    <rect x="45" y="30" width="10" height="60" fill="white" opacity="0.3" />
                 </svg>
-                <p>Describe this item:</p>
-                <textarea id="v1" placeholder="What do you see?"></textarea>
-                <button type="button" class="btn btn-secondary" onclick="alert('Sample: This is a purple blazer. It looks tailored and professional.')">Example Answer</button>
+                <p><strong>Look & Describe:</strong></p>
+                <textarea id="desc1" placeholder="Write a sentence..."></textarea>
+                <button type="button" class="btn btn-secondary" onclick="revealSample('This is a blue tailored blazer.')">Example Answer</button>
             </div>
+
             <div class="visual-card card">
                 <svg viewBox="0 0 100 100">
-                    <circle cx="50" cy="40" r="30" fill="#ff7675" />
-                    <rect x="20" y="40" width="60" height="10" fill="#ff7675" />
+                    <circle cx="50" cy="30" r="20" fill="#ff7675" />
+                    <rect x="25" y="45" width="50" height="40" fill="#ff7675" />
                 </svg>
-                <p>Describe this item:</p>
-                <textarea id="v2" placeholder="What do you see?"></textarea>
-                <button type="button" class="btn btn-secondary" onclick="alert('Sample: This is a red hat. It is a stylish accessory for an outfit.')">Example Answer</button>
+                <p><strong>Look & Describe:</strong></p>
+                <textarea id="desc2" placeholder="Write a sentence..."></textarea>
+                <button type="button" class="btn btn-secondary" onclick="revealSample('This is a red hoodie for cold weather.')">Example Answer</button>
             </div>
         </div>
 
         <div class="card">
             <h3>Discussion Questions</h3>
-            <p>1. What is your favorite <b>outfit</b> to wear on the weekend?</p>
-            <textarea></textarea>
-            <button type="button" class="btn btn-secondary" onclick="alert('Sample: My favorite outfit is a comfy hoodie and blue jeans.')">Example Answer</button>
-        </div>
-
-        <div class="card">
-            <h3>The Perfect Suit</h3>
-            <p style="font-style: italic; line-height: 1.8;">
-                Ahmed had an important interview. He wanted a <b>tailored</b> look, so he bought a navy <b>blazer</b>. When he <b>tried it on</b>, it <b>fit like a glove</b>. He checked the <b>cuffs</b> of his shirt to make sure they were clean. On his way, he saw a friend wearing a casual <b>hoodie</b>. "You look very sharp!" his friend said. Ahmed felt confident in his new <b>outfit</b>. He knew that dressing well was always <b>in fashion</b> for professional meetings.
-            </p>
+            <p>1. What is your favorite <b>outfit</b> for a party?</p>
+            <textarea id="disc1"></textarea>
+            <button type="button" class="btn btn-secondary" onclick="revealSample('My favorite outfit is a black tailored dress with red shoes.')">Example Answer</button>
         </div>
     </section>
 </div>
 
 <script>
+    // Tab Navigation Logic
     function showTab(index) {
-        const tabs = document.querySelectorAll('.content-section');
-        const btns = document.querySelectorAll('.tab-btn');
-        tabs.forEach(t => t.classList.remove('active'));
-        btns.forEach(b => b.classList.remove('active'));
-        tabs[index].classList.add('active');
-        btns[index].classList.add('active');
+        const sections = document.querySelectorAll('.content-section');
+        const buttons = document.querySelectorAll('.tab-btn');
+        
+        sections.forEach(s => s.classList.remove('active'));
+        buttons.forEach(b => b.classList.remove('active'));
+        
+        sections[index].classList.add('active');
+        buttons[index].classList.add('active');
     }
 
+    // Exercise 1 Logic
+    function checkEx1() {
+        const ans1 = document.getElementById('ex1-1').value.toLowerCase().trim();
+        const ans2 = document.getElementById('ex1-2').value.toLowerCase().trim();
+        const ans3 = document.getElementById('ex1-3').value.toLowerCase().trim();
+
+        if (ans1 === 'tailored' && ans2 === 'blazer' && ans3 === 'dress up') {
+            alert('Great job! All answers are correct.');
+        } else {
+            alert('Some answers are incorrect. Try again or check corrections!');
+        }
+    }
+
+    // Exercise 2 Logic
+    function checkEx2() {
+        const match1 = document.getElementById('ex2-1').value;
+        const match2 = document.getElementById('ex2-2').value;
+
+        if (match1 === 'correct' && match2 === 'correct') {
+            alert('Perfect matching!');
+        } else {
+            alert('Try again!');
+        }
+    }
+
+    // Toggle Corrections
     function toggleCorr(id) {
         const el = document.getElementById(id);
-        el.style.display = el.style.display === 'block' ? 'none' : 'block';
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
     }
 
-    function checkEx1() {
-        const q1 = document.getElementById('ex1-1').value.toLowerCase().trim();
-        const q2 = document.getElementById('ex1-2').value.toLowerCase().trim();
-        if(q1 === 'blazer' && q2 === 'glove') alert('Excellent work!');
-        else alert('Some answers are incorrect. Try again!');
-    }
-
-    function checkEx2() {
-        const s1 = document.getElementById('ex2-1').value;
-        const s2 = document.getElementById('ex2-2').value;
-        if(s1 === 'correct' && s2 === 'correct') alert('Perfect matching!');
-        else alert('Check your selections.');
+    // Creative Reveal Alert
+    function revealSample(text) {
+        alert("Sample Answer: " + text);
     }
 </script>
 
